@@ -1,0 +1,32 @@
+.unicode-list {
+    list-style-type: "\2023";
+    margin-right: 0px;
+    font-size: 20px;
+}
+
+.styled-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.styled-list li {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+.add-button{
+    background-color: #718355;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.add-button a{
+    color: #fff;
+    text-decoration: none;
+}
+ 

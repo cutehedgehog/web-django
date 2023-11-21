@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/news_more.css' %}>
+{% endblock %}
+{% block content %}
+
+<body>
+    <div class="article-container">
+    <h1>{{article.title}}</h1>
+     <img src={{article.image.url}} alt="not found", height="100">
+            <p>
+                {{article.news_text}}
+            </p>
+    </div>
+    <div class="all-button">
+        <a href='/news'>All news</a>
+    </div>
+</body>
+
+{% endblock %}
+

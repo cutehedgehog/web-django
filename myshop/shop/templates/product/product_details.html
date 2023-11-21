@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+<div class="product-detail">
+    <h1>{{ product.name }}</h1>
+    <p class="provider">Provider: {{ product.provider.name }}</p>
+    <p class="cost">Cost: {{ product.price }}</p>
+    <p class="category"> Category:
+        <ul>
+            {% for c in product.categories.all%}
+            <li>{{c.name}}</li>
+            {% endfor %}
+        </ul>
+
+    </p>
+    {%if user.is_authenticated and not user.is_staff%}
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        <br>
+        {% csrf_token %}
+        {{ add_to_cart_form.as_p }}
+        <input type="submit" value="Add to cart">
+    </form>
+    {%endif%}
+    {%if user.is_staff%}
+    <div id="main" class="product-list">
+        <a href="{% url 'shop:delete_product' product.id %}"> Delete </a><br>
+        <a href="{% url 'shop:edit_product' provider_name=product.provider.name id=product.id %}"> Edit </a><br>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
+

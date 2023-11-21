@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+{% load static%}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_tags.css' %}>
+{% endblock %}
+{% block content %}
+  <div class="head">
+  <h1>Tags page</h1>
+  </div>
+  <section>
+    <h2>Code Listing</h2>
+    <pre><code>
+      &lt;html&gt;
+      &lt;head&gt;
+        &lt;title&gt;Hello, World!&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Welcome to my webpage!&lt;/h1&gt;
+        &lt;p&gt;This is a sample paragraph.&lt;/p&gt;
+      &lt;/body>
+      &lt;/html>
+    </code></pre>
+  </section>
+
+  <section>
+    <h2>Abbreviations</h2>
+    <p>The HTML stands for <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+  </section>
+
+  <section>
+    <h2>Definitions</h2>
+    <dl>
+      <dt>HTML</dt>
+      <dd>A markup language for creating web pages.</dd>
+      <dt>CSS</dt>
+      <dd>A stylesheet language used for describing the presentation of a document written in HTML.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Quotations</h2>
+    
+<span class="quote" lang="en">
+  This is an English quote.
+</span>
+
+<span class="quote" lang="fr">
+  Ceci est une citation en français.
+</span>
+
+<span class="quote" lang="es">
+  Esta es una cita en español.
+</span>
+   </section>
+
+  <section>
+    <h2>Date and Time</h2>
+    <p>The current date and time is: <time datetime="2023-09-23T12:00:00">September 23, 2023, 12:00 PM</time>.</p>
+  </section>
+
+  <section>
+    <h2>Poem</h2>
+    Behold the sun,<wbr> rising above the hills,<br>
+    Its golden rays<wbr> painting nature's thrills.<br>
+    A canvas of colors,<wbr> vibrant and bold,<br>
+    Stories untold,<wbr> waiting to unfold.<br>
+
+  </section>
+  <section>
+    <h2>Figure</h2>
+    <figure>
+    <img src="/media/logo.jpg" alt="not found" height="100"/>
+    <figcaption>Our logo</figcaption>
+  </figure>
+  </section>
+
+  <div class="container">
+    <h2>Заголовок</h2>
+    <p>Текст абзаца</p>
+  </div>
+  
+  <ul class="test-list">
+    <li>Элемент списка 1</li>
+    <li>Элемент списка 2</li>
+    <li>Элемент списка 3</li>
+    <li>Элемент списка 4</li>
+    <li>Элемент списка 5</li>
+    <li>Элемент списка 6</li>
+  </ul>
+
+  <a href="https://example.com">Ссылка 1</a>
+  <a href="http://example.com">Ссылка 2</a><br>
+
+  <img src="/media/logo.jpg" alt="Изображение 1" height="100px">
+  <img src="/media/Sheba_Logo.png" alt="Изображение 2" height="100px">
+  <img src="/media/logo.jpg" alt="Изображение 3" height="100px">  
+  <br>
+  <button onclick="transposeTable()">Transpose table</button>
+    <br>
+    <br>
+    <button onclick="addRow()">Add row</button>
+    <button onclick="addColumn()">Add column</button>
+    <br>
+    <br>
+    <label for="maxCells">Max cells to select in a row/column:</label>
+    <input type="number" id="maxCells" min="1" value="1">
+    <br>
+    <br>
+    <label for="tableSize">Table size:</label>
+    <input type="number" id="tableSize" min="1" value="4">
+    <button onclick="createNewTable()">Create table</button>
+    <br>
+    <br>
+    <table id="myTable"></table>
+<script>
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function createTable(size) {
+    const table = document.getElementById('myTable');
+    table.innerHTML = '';
+
+    for (let i = 0; i < size; i++) {
+        const row = table.insertRow();
+        for (let j = 0; j < size; j++) {
+            const cell = row.insertCell();
+            cell.textContent = getRandomInt(1, 100);
+            cell.style.backgroundColor = '';
+        }
+    }
+}
+
+function countRedCyanInRowCol(table, row, col) {
+    let count = 0;
+
+    for (let i = 0; i < table.rows.length; i++) {
+        if (i === row && (table.rows[i].cells[col].style.backgroundColor === 'cyan' || table.rows[i].cells[col].style.backgroundColor === 'red')) {
+            count++;
+        }
+    }
+    return count;
+}
+
+
+function canSelectCell(table, row, col, n) {
+    let selectedRedCyan = 0;
+
+    for (let i = 0; i < table.rows.length; i++) {
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            if ((i === row) && !(i === row && j === col)) {
+                if (table.rows[i].cells[j].style.backgroundColor === 'cyan' || table.rows[i].cells[j].style.backgroundColor === 'red') {
+                    selectedRedCyan++;
+                    if ((i === row && Math.abs(j - col) <= 1) || (j === col && Math.abs(i - row) <= 1)) {
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+
+    return selectedRedCyan < n;
+}
+
+function selectCellsInRowCol(table, row, col, n) {
+    const currentCell = table.rows[row].cells[col];
+
+    if ((currentCell.style.backgroundColor === 'cyan' || currentCell.style.backgroundColor === 'red') && countRedCyanInRowCol(table, row, col) >= n) {
+        currentCell.style.backgroundColor = '';
+    } else if (canSelectCell(table, row, col, n)) {
+        if (currentCell.textContent % 2 === 0) {
+            currentCell.style.backgroundColor = 'red';
+        } else {
+            currentCell.style.backgroundColor = 'cyan';
+        }
+    }
+}
+
+
+function transposeTable() {
+    const table = document.getElementById('myTable');
+    const cellColors = [];
+
+    for (let i = 0; i < table.rows.length; i++) {
+        cellColors.push([]);
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            cellColors[i][j] = table.rows[i].cells[j].style.backgroundColor;
+        }
+    }
+
+    const newTable = [];
+    for (let i = 0; i < table.rows.length; i++) {
+        newTable.push([]);
+        for (let j = 0; j < table.rows[i].cells.length; j++) {
+            newTable[i][j] = table.rows[j].cells[i].textContent;
+        }
+    }
+
+    table.innerHTML = '';
+    for (let i = 0; i < newTable.length; i++) {
+        const row = table.insertRow();
+        for (let j = 0; j < newTable[i].length; j++) {
+            const cell = row.insertCell();
+            cell.textContent = newTable[i][j];
+            cell.style.backgroundColor = cellColors[j][i];
+        }
+    }
+}
+
+function addRow() {
+    const table = document.getElementById('myTable');
+    const newRow = table.insertRow();
+
+    for (let j = 0; j < table.rows[0].cells.length; j++) {
+        const cell = newRow.insertCell();
+        cell.textContent = getRandomInt(1, 100);
+        cell.style.backgroundColor = '';
+    }
+}
+
+function addColumn() {
+    const table = document.getElementById('myTable');
+    for (let i = 0; i < table.rows.length; i++) {
+        const cell = table.rows[i].insertCell();
+        cell.textContent = getRandomInt(1, 100);
+        cell.style.backgroundColor = '';
+    }
+}
+
+document.getElementById('myTable').addEventListener('click', function (event) {
+    if (event.target.nodeName === 'TD') {
+        const cell = event.target;
+        const rowIndex = cell.parentNode.rowIndex;
+        const cellIndex = cell.cellIndex;
+        const maxCells = parseInt(document.getElementById('maxCells').value);
+        selectCellsInRowCol(document.getElementById('myTable'), rowIndex, cellIndex, maxCells);
+    }
+});
+
+function createNewTable() {
+    const tableSize = parseInt(document.getElementById('tableSize').value);
+    createTable(tableSize);
+}
+
+createNewTable();
+</script>
+
+<h2>Экспорт товаров</h2>
+<form id="exportForm1">
+  <label for="productName1">Наименование товара:</label>
+  <input type="text" id="productName1" required><br><br>
+
+  <label for="countryName1">Страна:</label>
+  <input type="text" id="countryName1" required><br><br>
+
+  <label for="exportVolume1">Объем экспорта:</label>
+  <input type="number" id="exportVolume1" required><br><br>
+
+  <button type="submit">Добавить</button>
+</form>
+<br>
+<form id="exportForm">
+  <label for="productName">Наименование товара:</label>
+  <input type="text" id="productName" required><br><br>
+
+  <button type="submit">Найти</button>
+</form>
+
+<div id="resultContainer">
+  <h3>Результаты:</h3>
+  <div id="exportCountries"></div>
+  <div id="totalExportVolume"></div>
+</div>
+<script>
+  var exportMap = {
+    'Товар 1': {
+    'Страна 1': 100,
+    'Страна 2': 200,
+    'Страна 3': 150
+    },
+    'Товар 2': {
+    'Страна 1': 50,
+    'Страна 4': 300,
+    'Страна 5': 100
+    },
+    'Товар 3': {
+    'Страна 2': 250,
+    'Страна 4': 50,
+    'Страна 6': 200
+    }
+    };
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('exportForm1').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var productName = document.getElementById('productName1').value;
+        var countryName = document.getElementById('countryName1').value;
+        var exportVolume = parseInt(document.getElementById('exportVolume1').value);
+
+        if (!exportMap[productName]) {
+          exportMap[productName] = {};
+        }
+
+        exportMap[productName][countryName] = exportVolume;
+
+        document.getElementById('productName1').value = '';
+        document.getElementById('countryName1').value = '';
+        document.getElementById('exportVolume1').value = '';
+
+        console.log(exportMap);
+      });
+    });
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('exportForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      var productName = document.getElementById('productName').value;
+
+      var exportCountries = exportMap[productName];
+      var totalExportVolume = 0;
+
+      if (exportCountries) {
+        for (var country in exportCountries) {
+          totalExportVolume += exportCountries[country];
+        }
+      }
+
+      var exportCountriesContainer = document.getElementById('exportCountries');
+      var totalExportVolumeContainer = document.getElementById('totalExportVolume');
+
+      exportCountriesContainer.innerHTML = '';
+      totalExportVolumeContainer.innerHTML = '';
+
+      if (exportCountries) {
+        for (var country in exportCountries) {
+          var countryExport = exportCountries[country];
+          var countryExportText = country + ': ' + countryExport + ' шт.';
+
+          var countryExportElement = document.createElement('p');
+          countryExportElement.textContent = countryExportText;
+          exportCountriesContainer.appendChild(countryExportElement);
+        }
+
+        var totalExportVolumeText = 'Общий объем экспорта: ' + totalExportVolume + ' шт.';
+        totalExportVolumeContainer.textContent = totalExportVolumeText;
+      } else {
+        totalExportVolumeContainer.textContent = 'Товар не экспортируется в другие страны.';
+      }
+
+      var resultContainer = document.getElementById('resultContainer');
+      resultContainer.style.display = 'block';
+    });
+  });
+</script>
+
+  {% endblock %}

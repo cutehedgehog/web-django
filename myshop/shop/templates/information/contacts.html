@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_contacts.css' %}>
+{% endblock %}
+{% block content %}
+
+<body>
+    <h1>Staff</h1>
+    <ul itemscope itemtype="http://schema.org/Person" class="list-contacts">
+        {% for w in workers%}
+        <li>
+            <img src="{{w.image.url}}" alt="not found" height="150">
+            <p>
+                <strong>First Name:</strong>
+                <span itemprop="givenName">{{w.first_name}}</span>
+            </p>
+            <p>
+                <strong>Last Name:</strong>
+                <span itemprop="familyName">{{w.last_name}}</span>
+            </p>
+            <p>
+                <strong>Phone:</strong>
+                <span itemprop="telephone">{{w.phone_number}}</span>
+            </p>
+            <p>
+                <strong>Email:</strong>
+                <span itemprop="email">{{w.email}}</span>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+{% endblock %}
+
+

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/list.css' %}>
+{% endblock %}
+{% block content %}
+
+<body>
+    <h1>Coupons</h1>
+    <ul class="unicode-list">
+        {% for c in coupons_list%}
+        <li>
+            <p>
+                <strong>{{c.title}}</strong>
+            </p>
+            <p>
+                {{c.description}}
+            </p>
+            <p>
+                Last from <time>{{c.start_date}}</time> to <time>{{c.end_date}}</time>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+{% endblock %}

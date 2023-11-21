@@ -1,0 +1,153 @@
+body {
+  font-family: 'Monseratt', Arial, sans-serif;
+  padding: 0;
+  background-color: #F5F5F5;
+
+  overflow-x: hidden;
+}
+
+
+#countdown {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #F5F5F5;
+}
+
+header img {
+  height: 100px;
+  margin-right: 10px;
+}
+
+header h1 {
+  color: #333;
+}
+
+nav {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #718355;
+  z-index: 2;
+}
+
+.base-nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 5px;
+}
+
+.base-nav li {
+  margin-right: 5px;
+}
+
+.base-nav li a {
+  color: #FFF;
+  text-decoration: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.base-nav li a:link {
+  color: #E9F5DB;
+}
+
+.base-nav li a:visited {
+  color: #CFE1B9;
+}
+
+.base-nav li a:hover {
+  background-color: #97A97C;
+  color: #E9F5DB;
+}
+
+.base-nav li a:active {
+  background-color: #87986A; 
+  color: #E9F5DB;
+}
+
+.user-log {
+  color: #E9F5DB;
+  padding: 10px;
+}
+
+.user-log a {
+  color: #E9F5DB;
+  padding: 10px;
+}
+
+.time-block {
+  font-family: 'Monseratt', Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.company-name {
+  font-family: Arial, sans-serif; 
+  font-weight: bold;
+  font-size: 60px; 
+  letter-spacing: 3px; 
+}
+
+@font-face {
+  font-family: 'Monseratt';
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
+p {
+  margin: 15px; 
+  padding: 10px;
+  text-indent: 20px;
+  line-height: 1.15; 
+  text-transform: initial; 
+  word-spacing: 5px; 
+  letter-spacing: 1px; 
+  hyphens: auto;
+  word-break: break-all;
+  font-family: 'Monseratt', sans-serif; 
+  text-align: justify;
+  font-kerning: normal;
+}
+
+h1, h2, h3{
+  margin-left: 20px;
+}
+
+header .logo {
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background-color: #718355;
+  color: #E9F5DB;
+  bottom: 0;
+  margin-top: auto;
+}

@@ -1,0 +1,14 @@
+.vacancy {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.vacancies::after {
+    content: "";
+    clear: both;
+}
+.vacancies {
+    margin: 30px;
+}

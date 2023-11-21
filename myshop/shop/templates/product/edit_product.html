@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <form method="post" action="{% url 'shop:edit_product' provider_name=product.provider.name id=product.id %}">
+  {% csrf_token %}
+
+  <label for="id_name">Name:</label>
+  <input type="text" name="name" id="id_name" value="{{product.name}}"><br>
+
+  <label for="id_price">Price:</label>
+  <input type="number" name="price" id="id_price" value="{{product.price}}"><br>
+
+  <label for="id_vendor_code">Vendor Code:</label>
+  <input type="text" name="vendor_code" id="id_vendor_code" value="{{product.vendor_code}}"><br>
+
+  <label for="id_categories">Categories:</label>
+  <select name="categories" id="id_categories" multiple>
+    {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+    {% endfor %}
+  </select><br>
+
+  <input type="submit" value="Save">
+</form>
+{% endblock %}

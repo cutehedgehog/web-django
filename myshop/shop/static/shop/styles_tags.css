@@ -1,0 +1,99 @@
+.quote {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    border: 2px solid #718355;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .quote::before,
+  .quote::after {
+    font-size: 24px;
+  }
+
+  .quote[lang="en"]::before {
+    content: '"';
+  }
+
+  .quote[lang="en"]::after {
+    content: '"';
+  }
+
+  .quote[lang="fr"]::before {
+    content: '«';
+  }
+
+  .quote[lang="fr"]::after {
+    content: '»';
+  }
+
+  .quote[lang="es"]::before {
+    content: '“';
+  }
+
+  .quote[lang="es"]::after {
+    content: '”';
+  }
+
+  section {
+    margin: 20px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .head h1 {
+    text-align: center;
+  }
+
+  .container h2 {
+    color: blue;
+  }
+
+  .container p {
+    color: red;
+  }
+
+  .test-list > li {
+    color: green;
+  }
+
+  .test-list li:first-child {
+    color: red;
+  }
+
+  .test-list li:last-child {
+    color: blue;
+  }
+
+  .test-list li:nth-child(2) {
+    font-weight: bold;
+  }
+
+  a[href^="https"] {
+    color: green;
+  }
+
+  img[src$=".png"] {
+    border: 2px solid red;
+  }
+  table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected {
+  background-color: red;
+}
+#resultContainer {
+  display: none;
+  margin-top: 20px;
+}

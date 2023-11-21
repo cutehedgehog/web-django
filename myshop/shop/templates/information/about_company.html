@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_about.css' %}>
+{% endblock %}
+
+{% block content %}
+
+<body>
+      <h2>About Our Company</h2>
+      <a href="#requisites">Go to requisites</a><br>
+  <video src="/media/cat_video.mp4" height="300" controls></video>
+  <section class="about_company">
+      <h1>About our company</h1>
+      <article>
+          <p><b>Pets Love</b> is a leading pet store dedicated to providing exceptional products and services for pets and their owners.</p>
+        <p><em>Founded in 2005</em> by John and Sarah Smith, Pets Love has grown to become a trusted name in the pet industry, with multiple locations across the United States.</p>
+          <p>At Pets Love, we believe that pets are family, and we strive to offer a wide range of <i>high-quality</i> pet care products, including food, toys, accessories, and grooming supplies.</p>
+        <p>Our knowledgeable and friendly staff is passionate about ensuring the well-being and happiness of pets, and we provide personalized assistance and expert advice to our valued customers.</p>
+        <p>In addition to our comprehensive product selection, we offer various services such as professional grooming, pet training, and adoption programs to help pets and their owners thrive.</p>
+        <p>At Pets Love, we are committed to fostering the bond between pets and their owners through exceptional products, compassionate care, and a dedication to customer satisfaction.</p>
+        <p><small>Visit one of our locations today and experience the love we have for pets!</small></p>
+      </article>
+    <h2>Company History</h2>
+     <article>
+      <h3>Establishment of Pets Love</h3>
+      <time datetime="2005-03-15">March 15, 2005</time>
+      <p>Pets Love was founded by John and Sarah Smith in the bustling city of New York.</p>
+      <p>With a passion for animals and a vision to provide exceptional pet care products and services, John and Sarah set out to create a welcoming and trusted pet store.</p>
+      <p>Their dedication to customer satisfaction and the well-being of pets quickly gained recognition, laying a strong foundation for the future growth of Pets Love.</p>
+    </article>
+
+    <article>
+      <h3>Expansion to San Francisco</h3>
+      <time datetime="2007-09-21">September 21, 2007</time>
+      <p>Pets Love expanded its operations and opened a new branch in the beautiful city of San Francisco, California.</p>
+      <p>The San Francisco location quickly became a hub for pet lovers, offering a wide range of high-quality pet food, toys, accessories, and professional grooming services.</p>
+      <p>The warm and friendly atmosphere of the store, combined with the expertise of the dedicated staff, made Pets Love a beloved destination for pet owners in the Bay Area.</p>
+    </article>
+
+    <article>
+      <h3>Grand Opening in Miami</h3>
+      <time datetime="2010-06-08">June 8, 2010</time>
+      <p>Pets Love celebrated the grand opening of its Miami location, bringing joy to pet lovers in the vibrant city.</p>
+      <p>The Miami store showcased a wide variety of pets for adoption, including dogs, cats, birds, and small animals, providing a loving home for many furry friends.</p>
+      <p>Customers in Miami also had access to expert pet training sessions and educational workshops organized by Pets Love to promote responsible pet ownership.</p>
+    </article>
+
+    <article>
+      <h3>10-Year Anniversary</h3>
+      <time datetime="2015-11-30">November 30, 2015</time>
+      <p>Pets Love proudly commemorated its 10-year anniversary, expressing gratitude to its loyal customers for their unwavering support over the years.</p>
+      <p>To mark this milestone, Pets Love organized a series of special events, including adoption drives, charity fundraisers for animal welfare organizations, and discounted offers on a wide range of pet products.</p>
+      <p>The 10-year anniversary celebration served as a testament to the strong bond between Pets Love and the pet-loving community it served.</p>
+    </article>
+
+    <article>
+      <h3>Expansion to Chicago</h3>
+      <time datetime="2020-02-14">February 14, 2020</time>
+      <p>Pets Love expanded once again, opening a new store in the lively city of Chicago, Illinois.</p>
+      <p>The Chicago location featured state-of-the-art pet care facilities, including a dedicated grooming salon, a pet daycare center, and a training area.</p>
+      <p>With its commitment to excellence and personalized customer service, Pets Love quickly became a trusted name in the pet industry within the Chicago community.</p>
+    </article>
+  </section>
+
+  <div class="certificate">
+    <h1>Лицензия на продажу зоотоваров</h1>
+    <p>Магазину зоотоваров</p>
+    <img class="logo" src="/media/logo.jpg" alt="Логотип">
+    <p>Настоящей лицензией подтверждается, что</p>
+    <p><strong>Pets Love</strong></p>
+    <p>имеет право осуществлять продажу зоотоваров согласно законодательству и требованиям соответствующих органов.</p>
+    <p>Данный сертификат-лицензия удостоверяет, что магазин зоотоваров имеет все необходимые разрешения и квалификации для продажи различных продуктов и услуг для животных.</p>
+    <p>Магазин зоотоваров обязуется соблюдать высокие стандарты качества и безопасности продуктов, а также предоставлять профессиональную консультацию и поддержку клиентам.</p>
+    <p>Лицензия действительна до: 31.12.2023</p>
+    <p>Выдано: 01.01.2023</p>
+    <img class="stamp" src="/media/stamp.png" alt="Штамп">
+  </div>
+
+  <div><iframe scrolling="no" src="https://maps.google.com/maps?width=30%25&amp;height=100&amp;hl=en&amp;q=Sacramento+(Pets%20Love)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="50%" height="400" frameborder="0"></iframe></div>
+  <section id="requisites">
+    <h1>Company Requisites</h1>
+    <ul itemscope itemtype="https://schema.org/Organization">
+        <li><strong>Name:</strong> <span itemprop="name">Pets Love Company</span></li>
+        <li><strong>Location:</strong> <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality">Sacramento</span>, <span itemprop="addressRegion">California</span>, <span itemprop="addressCountry">USA</span></span></li>
+        <li><strong>Contact:</strong> <a href="tel:+123456789" itemprop="telephone">+1 (234) 567-89</a></li>
+        <li><strong>Email:</strong> <a href="mailto:info@petproductcompany.com" itemprop="email">info@petslovecompany.com</a></li>
+        <li><strong>Website:</strong> <a href="https://www.petproductcompany.com" itemprop="url">www.petslovecompany.com</a></li>
+    </ul>
+  </section>
+
+</body>
+
+{% endblock %}
+
+

@@ -1,0 +1,22 @@
+details {
+    margin-bottom: 10px;
+    
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+small {
+    margin-left: 20px;
+}
+
+.faq_container{
+    margin: 20px;
+}

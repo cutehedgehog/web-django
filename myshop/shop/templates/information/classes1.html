@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример</title>
+</head>
+<body>
+    <script>
+// Базовый класс Animal (Животное)
+function Animal(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  Animal.prototype.getName = function() {
+    return this.name;
+  };
+  
+  Animal.prototype.getAge = function() {
+    return this.age;
+  };
+  
+  // Класс-наследник Pet (Домашнее животное)
+  function Pet(name, age, breed, color) {
+    Animal.call(this, name, age); 
+    this.breed = breed;
+    this.color = color;
+    this.isTrained = false;
+  }
+
+  Pet.prototype = Object.create(Animal.prototype);
+  Pet.prototype.constructor = Pet;
+
+  Pet.prototype.getBreed = function() {
+    return this.breed;
+  };
+  
+  Pet.prototype.setBreed = function(newBreed) {
+    this.breed = newBreed;
+  };
+  
+  Pet.prototype.getColor = function() {
+    return this.color;
+  };
+  
+  Pet.prototype.setColor = function(newColor) {
+    this.color = newColor;
+  };
+  
+  Pet.prototype.isPetTrained = function() {
+    return this.isTrained;
+  };
+  
+  Pet.prototype.trainPet = function() {
+    this.isTrained = true;
+  };
+  
+  function capitalizeDecorator(func) {
+    return function() {
+      var name = func.apply(this, arguments);
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    };
+  }
+
+  Pet.prototype.getName = capitalizeDecorator(Pet.prototype.getName);
+ 
+  var pet = new Pet("cake", 3, "Cat", "Orange");
+  console.log(pet.getName()); 
+  console.log(pet.getAge()); 
+  console.log(pet.getBreed()); 
+  console.log(pet.getColor());
+  console.log(pet.isPetTrained()); 
+  
+  pet.setBreed("Ragdoll");
+  pet.setColor("White");
+  pet.trainPet();
+  
+  console.log(pet.getBreed());
+  console.log(pet.getColor());
+  console.log(pet.isPetTrained());
+  
+
+</script>
+</body>
+</html>

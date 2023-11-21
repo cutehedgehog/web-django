@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример</title>
+</head>
+<body>
+    <script>
+// Базовый класс Animal (Животное)
+class Animal {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+  
+    getName() {
+      return this.name;
+    }
+  
+    getAge() {
+      return this.age;
+    }
+  }
+  
+  // Класс-наследник Pet (Домашнее животное)
+  class Pet extends Animal {
+    constructor(name, age, breed, color) {
+      super(name, age); 
+      this.breed = breed;
+      this.color = color;
+      this.isTrained = false;
+    }
+  
+    getBreed() {
+      return this.breed;
+    }
+  
+    setBreed(newBreed) {
+      this.breed = newBreed;
+    }
+  
+    getColor() {
+      return this.color;
+    }
+  
+    setColor(newColor) {
+      this.color = newColor;
+    }
+  
+    isPetTrained() {
+      return this.isTrained;
+    }
+  
+    trainPet() {
+      this.isTrained = true;
+    }
+  
+
+    getName() {
+      return capitalizeDecorator(super.getName());
+    }
+  }
+
+  function capitalizeDecorator(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+  
+  // Создание объекта и демонстрация функциональности классов
+  const pet = new Pet("Cake", 3, "Cat", "Orange");
+  console.log(pet.getName());
+  console.log(pet.getAge()); 
+  console.log(pet.getBreed()); 
+  console.log(pet.getColor());
+  console.log(pet.isPetTrained());
+</script>
+</body>
+</html>

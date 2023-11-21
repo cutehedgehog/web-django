@@ -1,0 +1,29 @@
+.article-container {
+    column-count: 2;
+    column-gap: 20px;
+}
+
+.article-container img {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    max-height: 200px;
+}
+
+.article-container p {
+    margin: 0;
+}
+
+.all-button{
+    background-color: #718355;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    width: 60px;
+    margin-top: 20px;
+}
+
+.all-button a{
+    color: #fff;
+    text-decoration: none;
+}

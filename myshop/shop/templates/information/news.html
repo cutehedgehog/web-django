@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/news.css' %}>
+{% endblock %}
+{% block content %}
+
+<body>
+    <h1>News</h1>
+    <ul class="styled-list">
+        {% for n in news_list %}
+        <li>
+            <div class="news-container">
+                <h4>
+                <strong>{{n.title}}</strong>
+                </h4>
+                <img src="{{n.image.url}}" alt="not found" height="100">
+                <div>
+                    <p>
+                        {{n.summary}}
+                    </p>
+                    <a href="{% url 'shop:news_article' n.id %}">Read more...</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+{% endblock %}
+

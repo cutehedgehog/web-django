@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_home.css' %}>
+{% endblock %}
+{% block content %}
+    {% comment %} {%if fact_about_cat %}
+    Here is fact about cat: <strong>{{ fact_about_cat }}</strong>
+    {% endif %} {% endcomment %}
+    <h2>Last news</h2>
+    <div class="news-container">
+        <p>
+        <strong>{{last_news.title}}</strong>
+        </p>
+        <img src={{last_news.image.url}} alt="not found" height="100">
+        <p class="news-summary">
+            {{last_news.summary}}
+        </p>
+        <a href="{% url 'shop:news_article' last_news.id %}">Read more...</a>
+    </div><br>
+    <div class="slideshow">
+      <img src="media/optimanova_banner.png" class="slide">
+    </div>
+    
+    <div class="banner-container">
+      <a href="https://www.purina.ru/" id="banner1" class="banner active"><img src="media/hills-2560kh900.jpg" alt="purina" height="500"></a>
+      <a href="https://sheba.ru/" class="banner"><img src="media/slayder-sirius.jpg" alt="purina" height="500"></a>
+      <a href="https://chappi.ru/" class="banner"><img src="media/keshbek-za-otzyv.jpg" alt="purina" height="500"></a>
+    </div>
+    
+    {% if user.is_staff %}
+    <form>
+      <label for="interval">Промежуток времени (в секундах):</label>
+      <input type="number" id="interval" min="1" value="5">
+      <button id="confirmBtn">Применить</button>
+    </form>
+    {% endif %}
+   
+    <section id="top">
+      <img src="media/paw.png" id="paw_left" />
+      <img src="media/paw.png" id="paw_right" />
+    </section>
+
+    <script>
+      const pawLeft = document.querySelector('#paw_left');
+const pawRight = document.querySelector('#paw_right');
+
+function animatePaws() {
+  const scrollPosition = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const scrollThreshold = windowHeight * 0.8;
+
+  if (scrollPosition > scrollThreshold) {
+    const scrollOffset = (scrollPosition - scrollThreshold) / 0.7;
+    pawLeft.style.transform = `translateX(-${scrollOffset}px) rotate(90deg)`;
+    pawRight.style.transform = `translateX(${scrollOffset}px) rotate(-90deg)`;
+    disableHorizontalScroll();
+  } else {
+    pawLeft.style.transform = 'translateX(0) rotate(90deg)';
+    pawRight.style.transform = 'translateX(0) rotate(-90deg)';
+    enableHorizontalScroll(); 
+  }
+}
+
+function disableHorizontalScroll() {
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+  document.documentElement.style.overflowX = 'hidden';
+  document.body.style.overflowX = 'hidden';
+  window.scrollTo(scrollLeft, window.pageYOffset);
+}
+
+function enableHorizontalScroll() {
+  document.documentElement.style.overflowX = '';
+  document.body.style.overflowX = '';
+}
+
+window.addEventListener('scroll', animatePaws);
+    </script>
+
+  <table border="1">
+    <caption>Delivery Working Hours</caption>
+    <tr>
+      <th id="day">Day</th>
+      <th id="optime">Opening Time</th>
+      <th id="cltime">Closing Time</th>
+    </tr>
+    <tr>
+      <th headers="day">Monday</th>
+      <td rowspan="3">9:00 AM</td>
+      <td>5:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day" >Tuesday</th>
+      <td>6:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day">Wednesday</th>
+      <td>4:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day">Thursday</th>
+      <td>7:00 AM</td>
+      <td>6:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day">Friday</th>
+      <td>8:00 AM</td>
+      <td>6:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day">Saturday</th>
+      <td>10:00 AM</td>
+      <td>4:00 PM</td>
+    </tr>
+    <tr>
+      <th headers="day">Sunday</th>
+      <td colspan="2">Closed</td>
+    </tr>
+  </table>
+    
+    <div>
+        {%if user.is_staff%}
+        <h2><a href="order/list_orders">Orders</a></h2><br>
+        {% endif %}
+    </div>
+    <h2>Our partners</h2>
+    <div class="partners">
+        <a href="https://www.purina.ru/"><img src="media/Purina_Logo.png" alt="purina" height="100"></a>
+        <a href="https://sheba.ru/"><img src="media/Sheba_Logo.png" alt="purina" height="100"></a>
+        <a href="https://chappi.ru/"><img src="media/Chappi_Logo.png" alt="purina" height="100"></a>
+        <a href="https://www.whiskas.co.uk/"><img src="media/Whiskas_Logo.png" alt="purina" height="100"></a>
+    </div>
+    <script src="{% static 'shop/banner.js' %}"></script>.
+{% endblock %}

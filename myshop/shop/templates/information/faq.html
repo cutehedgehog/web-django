@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{%load static%}
+{% block title %}FAQs{% endblock %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_faq.css' %}>
+{% endblock %}
+{% block content %}
+    <div class="faq_container">
+    <h2>FAQ</h2>
+    {% for question in questions %}
+        <details>
+            <summary>{{ question.question }}</summary>
+            <p>{{ question.answer }}</p>
+            <small>{{ question.date }}</small>
+        </details>
+    {% endfor %}
+    </div>
+    <script src="{% static 'shop/classes.js' %}"></script>
+{% endblock %}

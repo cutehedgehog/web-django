@@ -1,0 +1,25 @@
+.list-contacts {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.list-contacts li {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.list-contacts img {
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.list-contacts p {
+    margin: 0;
+}

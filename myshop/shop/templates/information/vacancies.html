@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_stylesheets %}
+  <link rel="stylesheet" href={% static 'shop/styles_vacansies.css' %}>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <h1>Vacancies</h1>
+    <div class="vacancies">
+        {% for v in vacancies_list %}
+        <div class="vacancy">
+            <p><strong>{{ v.title }}</strong></p>
+            <p>{{ v.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+   <br>
+</body>
+
+{% endblock %}

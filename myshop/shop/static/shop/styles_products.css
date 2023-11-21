@@ -1,0 +1,160 @@
+input:enabled,
+select:enabled,
+option:enabled {
+  border: 2px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input:required,
+select:required {
+  border: 2px solid #ff0000;
+}
+
+input:disabled,
+select:disabled,
+option:disabled {
+  background-color: #f2f2f2;
+  color: #999;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="number"]:out-of-range {
+  border: 2px solid #ff0000;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background-color: #718355;
+  color: #fff;
+}
+
+input,
+select,
+option {
+  text-align: left;
+}
+
+input[type="submit"] {
+  background-color: #718355;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.provider-detail {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.provider-detail h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.provider-detail p {
+  margin-bottom: 5px;
+}
+
+.product-list {
+  margin-top: 20px;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.item a:hover {
+  text-decoration: underline;
+}
+
+.item .price {
+  font-weight: bold;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.catalog li {
+  perspective: 1000px; /* Set the 3D perspective for the cards */
+}
+
+.card {
+  background-color: #c8c8c8;
+  box-shadow: #333;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.5s; /* Add smooth transition for the transform */
+  transform-style: preserve-3d; /* Enable 3D transformations */
+}
+
+.card:hover {
+  transform: rotateY(15deg) rotateX(15deg); /* Apply the tilt effect on hover */
+}
+
+.card-image {
+  margin-bottom: 15px;
+}
+
+.card-content a {
+  text-decoration: none;
+  color: #333;
+}
+
+.card-content .price {
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
+  .catalog {
+      grid-template-columns: 1fr;
+  }
+}
+.item img{
+  margin-bottom: 15px;
+}
+
+button[type="submit"] {
+  background-color: #718355;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.styled-list {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.styled-list li {
+  margin: 10px;
+}
+
+.styled-list li a {
+  text-decoration: none;
+  color: #718355;
+}
